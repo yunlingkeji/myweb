@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capture Photo</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    
+     <script type="text/javascript" charset="utf-8" src="jquery-1.11.2.min.js"></script>
+     
+    <script type="text/javascript" charset="utf-8">
+
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+
+    // Wait for PhoneGap to connect with the device
+    //
+   
+
+
+    // PhoneGap is ready to be used!
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+		
+		
+		
+		 document.addEventListener("deviceready",onDeviceReady,false);
+	
+		window.addEventListener('message',function(event) {
+   
+   
+   var objname=event.data;
+   
+   alert("gogo");
+   
+    alert( objname);
+    
+   alert(objname.funcname);
+   
+   if (objname.funcname=="capturePhoto")
+   {
+   
+   alert("in");
+   
+   objname.onSuccess();
+   
+   
+   capturePhoto(objname.onSuccess,objname.onFail);
+   }
+    
+},false);
+
+		
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+  
+
+    // Called when a photo is successfully retrieved
+    //   
+   
+
+    // A button will call this function
+    //
+    function capturePhoto(onPhotoDataSuccess, onFail) {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
+    }
+
+    // A button will call this function
+    //
+
+
+   
+
+   
+
+
+    </script>
+  </head>
+  <body>
+<iframe src="http://test.yunlingkeji.com/ReminderApp" style="width:100%; height:100%; border:0px;" scrolling="no">
+	
+		
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
+  </body>
+</html>
